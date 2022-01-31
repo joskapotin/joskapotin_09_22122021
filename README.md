@@ -7,7 +7,7 @@ Vous êtes développeur front-end chez _Billed_ , une entreprise qui produit des
 Saas destinées aux équipes de ressources humaines.
 
 <p align = "center">
-<img src = "mission/logoBIlled.png">
+<img src = "mission/logoBilled.png">
 </p>
 
 ```
@@ -21,7 +21,7 @@ développeur de la _feature team_ a demandé à être épaulé pour tenir les d�
 appris hier lors de la réunion d’équipe que c’est vous qui avez été désigné!
 
 <p align = "center">
-<img src = "mission/interfaceBIlled.png">
+<img src = "mission/interfaceBilled.png">
 </p>
 
 ```
