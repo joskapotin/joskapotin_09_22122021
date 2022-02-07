@@ -24,13 +24,13 @@ describe("Given I am connected as an employee", () => {
         })
       );
     });
-    test("It should show the new bill form", () => {
+    test("Then it should show the new bill form", () => {
       const html = NewBillUI();
       document.body.innerHTML = html;
 
       expect(screen.getByTestId("form-new-bill")).toBeTruthy();
     });
-    test("Then mail icon in vertical layout should be highlighted", () => {
+    test("Then the mail icon in vertical layout should be highlighted", () => {
       const html = '<div id="root"></div>';
       document.body.innerHTML = html;
       Router();
@@ -40,7 +40,7 @@ describe("Given I am connected as an employee", () => {
     });
     describe("Given that i select a file", () => {
       describe("When the file extention is not allowed", () => {
-        test("It should not fire the store method and open an alert", () => {
+        test("Then it should not fire the store method and open an alert", () => {
           const html = NewBillUI();
           document.body.innerHTML = html;
 
@@ -78,7 +78,7 @@ describe("Given I am connected as an employee", () => {
         });
       });
       describe("When the file extention is allowed", () => {
-        test("It should fire the storage method and not open an alert", () => {
+        test("Then it should fire the storage method and not open an alert", () => {
           const html = NewBillUI();
           document.body.innerHTML = html;
 
@@ -94,7 +94,7 @@ describe("Given I am connected as an employee", () => {
             ref: {
               getDownloadURL: jest
                 .fn()
-                .mockResolvedValue("http://www.test.com"),
+                .mockResolvedValue("http://www.chucknorris.com"),
             },
           };
 
@@ -140,7 +140,7 @@ describe("Given I am connected as an employee", () => {
     });
   });
   describe("When i submit the form", () => {
-    test("It should fire the handleSubmit method and return to the bills page", () => {
+    test("Then it should fire the handleSubmit method and return to the bills page", () => {
       const html = NewBillUI();
       document.body.innerHTML = html;
 
@@ -171,7 +171,7 @@ describe("Given I am connected as an employee", () => {
 // test d'intégration POST
 describe("Given I am a user connected as an Employee", () => {
   describe("When I submit a new bill", () => {
-    test("It should post the new bill", async () => {
+    test("Then it should post the new bill", async () => {
       const postSpy = jest.spyOn(firebase, "post");
       const newBill = {
         id: "idtest",
@@ -181,8 +181,8 @@ describe("Given I am a user connected as an Employee", () => {
       expect(bills.data.length).toBe(1);
       expect(bills.data[0].id).toBe("idtest");
     });
-    describe("Given the API fails with 404 error", () => {
-      test("It should render 404 message error", async () => {
+    describe("When the API fails with 404 error", () => {
+      test("Then it should render 404 message error", async () => {
         firebase.post.mockImplementationOnce(() =>
           Promise.reject(new Error("Erreur 404"))
         );
@@ -192,8 +192,8 @@ describe("Given I am a user connected as an Employee", () => {
         expect(message).toBeTruthy();
       });
     });
-    describe("Given the API fails with 500 error", () => {
-      test("It should render 500 message error", async () => {
+    describe("When the API fails with 500 error", () => {
+      test("Then it should render 500 message error", async () => {
         firebase.post.mockImplementationOnce(() =>
           Promise.reject(new Error("Erreur 500"))
         );

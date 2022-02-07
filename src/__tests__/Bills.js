@@ -11,14 +11,14 @@ import firestore from "../app/Firestore.js";
 
 describe("Given I am connected as an employee", () => {
   describe("Given that the page is loading", () => {
-    test("It should display loading page", () => {
+    test("Then it should display loading page", () => {
       const html = BillsUI({ loading: true });
       document.body.innerHTML = html;
       expect(screen.getAllByText("Loading...")).toBeTruthy();
     });
   });
   describe("Given there is an error", () => {
-    test("It should display loading page", () => {
+    test("Then it should display loading page", () => {
       const html = BillsUI({ error: true });
       document.body.innerHTML = html;
       expect(screen.getAllByText("Erreur")).toBeTruthy();
@@ -39,7 +39,7 @@ describe("Given I am connected as an employee", () => {
         })
       );
     });
-    test("It should display the bills page", () => {
+    test("Then it should display the bills page", () => {
       const html = BillsUI({ data: bills });
       document.body.innerHTML = html;
 
@@ -70,8 +70,8 @@ describe("Given I am connected as an employee", () => {
       const datesSorted = [...dates].sort(antiChrono);
       expect(dates).toEqual(datesSorted);
     });
-    describe("Given that i click on the new bill button", () => {
-      test("It should open the new bill page", () => {
+    describe("When i click on the new bill button", () => {
+      test("Then it should open the new bill page", () => {
         const html = BillsUI({ data: bills });
         document.body.innerHTML = html;
 
@@ -94,7 +94,7 @@ describe("Given I am connected as an employee", () => {
         expect(screen.getAllByText("Envoyer une note de frais")).toBeTruthy();
       });
     });
-    describe("Given that i click on the eye icon", () => {
+    describe("When i click on the eye icon", () => {
       test("It should open the modal", () => {
         const html = BillsUI({ data: bills });
         document.body.innerHTML = html;
@@ -120,7 +120,7 @@ describe("Given I am connected as an employee", () => {
         });
       });
     });
-    describe("Given that i click the disconnect button", () => {
+    describe("When i click the disconnect button", () => {
       test("It should return to the login page", () => {
         const html = BillsUI({ data: bills });
         document.body.innerHTML = html;
@@ -164,7 +164,7 @@ describe("Given I am connected as an employee", () => {
     );
   });
   describe("When I navigate to the bills page", () => {
-    test("fetches bills from mock API GET", async () => {
+    test("Then it should fetches bills from mock API GET", async () => {
       const getSpy = jest.spyOn(firebase, "get");
       const bills = await firebase.get();
       expect(getSpy).toHaveBeenCalledTimes(1);
@@ -172,7 +172,7 @@ describe("Given I am connected as an employee", () => {
     });
   });
   describe("Given that there is an error 404", () => {
-    test("It should display the error page", async () => {
+    test("Then it should display the error page", async () => {
       firebase.get.mockImplementationOnce(() =>
         Promise.reject(new Error("Erreur 404"))
       );
@@ -183,7 +183,7 @@ describe("Given I am connected as an employee", () => {
     });
   });
   describe("Given that there is an error 500", () => {
-    test("It should display the error page", async () => {
+    test("Then it should display the error page", async () => {
       firebase.get.mockImplementationOnce(() =>
         Promise.reject(new Error("Erreur 500"))
       );
