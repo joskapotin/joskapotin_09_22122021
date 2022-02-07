@@ -39,7 +39,7 @@ describe("Given I am connected as an employee", () => {
       expect(icon).toHaveClass("active-icon");
     });
     describe("Given that i select a file", () => {
-      describe("Given that the file extention is not allowed", () => {
+      describe("When the file extention is not allowed", () => {
         test("It should not fire the store method and open an alert", () => {
           const html = NewBillUI();
           document.body.innerHTML = html;
@@ -77,7 +77,7 @@ describe("Given I am connected as an employee", () => {
           expect(refMock).not.toHaveBeenCalled();
         });
       });
-      describe("Given that the file extention is allowed", () => {
+      describe("When the file extention is allowed", () => {
         test("It should fire the storage method and not open an alert", () => {
           const html = NewBillUI();
           document.body.innerHTML = html;
@@ -138,32 +138,32 @@ describe("Given I am connected as an employee", () => {
         });
       });
     });
-    describe("Given that i submit the form", () => {
-      test("It should fire the handleSubmit method and return to the bills page", () => {
-        const html = NewBillUI();
+  });
+  describe("When i submit the form", () => {
+    test("It should fire the handleSubmit method and return to the bills page", () => {
+      const html = NewBillUI();
+      document.body.innerHTML = html;
+
+      const onNavigate = pathname => {
+        const html = ROUTES({ pathname, data: [] });
         document.body.innerHTML = html;
+      };
 
-        const onNavigate = pathname => {
-          const html = ROUTES({ pathname, data: [] });
-          document.body.innerHTML = html;
-        };
-
-        const newBill = new NewBill({
-          document,
-          onNavigate,
-          localStorage: null,
-          firestore: null,
-        });
-
-        const handleSubmit = jest.fn(newBill.handleSubmit);
-        const formNewBill = screen.getByTestId("form-new-bill");
-        formNewBill.addEventListener("submit", handleSubmit);
-
-        fireEvent.submit(formNewBill);
-
-        expect(handleSubmit).toHaveBeenCalled();
-        expect(screen.getByText("Mes notes de frais")).toBeTruthy;
+      const newBill = new NewBill({
+        document,
+        onNavigate,
+        localStorage: null,
+        firestore: null,
       });
+
+      const handleSubmit = jest.fn(newBill.handleSubmit);
+      const formNewBill = screen.getByTestId("form-new-bill");
+      formNewBill.addEventListener("submit", handleSubmit);
+
+      fireEvent.submit(formNewBill);
+
+      expect(handleSubmit).toHaveBeenCalled();
+      expect(screen.getByText("Mes notes de frais")).toBeTruthy;
     });
   });
 });

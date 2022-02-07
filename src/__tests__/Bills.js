@@ -1,4 +1,5 @@
 import { screen, fireEvent } from "@testing-library/dom";
+import "@testing-library/jest-dom";
 import BillsUI from "../views/BillsUI.js";
 import Bills from "../containers/Bills.js";
 import { bills } from "../fixtures/bills.js";
@@ -6,6 +7,7 @@ import { localStorageMock } from "../__mocks__/localStorage.js";
 import Router from "../app/Router.js";
 import { ROUTES, ROUTES_PATH } from "../constants/routes.js";
 import firebase from "../__mocks__/firebase.js";
+import firestore from "../app/Firestore.js";
 
 describe("Given I am connected as an employee", () => {
   describe("Given that the page is loading", () => {
@@ -45,6 +47,12 @@ describe("Given I am connected as an employee", () => {
     });
     test("Then bill icon in vertical layout should be highlighted", () => {
       document.body.innerHTML = '<div id="root"></div>';
+      const mockBills = jest.fn(() => {
+        return {
+          get: jest.fn().mockResolvedValue(bills),
+        };
+      });
+      firestore.bills = mockBills;
       Router();
       window.onNavigate(ROUTES_PATH["Bills"]);
       const icon = screen.getByTestId("icon-window");
