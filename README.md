@@ -2,8 +2,10 @@
 
 [openclassrooms.com/fr/projects/debuggez-et-testez-un-saas-rh/assignment](https://openclassrooms.com/fr/projects/debuggez-et-testez-un-saas-rh/assignment)
 
-60 heures Mis à jour le lundi 6 septembre 2021
-Vous êtes développeur front-end chez _Billed_ , une entreprise qui produit des solutions
+60 heures
+Mis à jour le lundi 6 septembre 2021
+
+Vous êtes développeur front-end chez _Billed_ ,une entreprise qui produit des solutions
 Saas destinées aux équipes de ressources humaines.
 
 <p align = "center">
