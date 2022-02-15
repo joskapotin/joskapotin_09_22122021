@@ -98,16 +98,6 @@ describe("Given I am connected as an employee", () => {
             },
           };
 
-          const successPut = jest.fn();
-
-          const resolvePromise = new Promise(jest.fn());
-
-          const resolveMock = jest.fn(() => resolvePromise);
-          const rejectMock = jest.fn();
-
-          const promise = new Promise(successPut, rejectMock);
-          promise.then = resolveMock;
-
           const putMock = jest.fn().mockResolvedValue(snapshot);
           const refMock = jest.fn(fileName => ({ put: putMock }));
           Object.defineProperty(firestore, "storage", {
